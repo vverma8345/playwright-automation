@@ -4,6 +4,10 @@ npm init playwright@latest
 # Check if intall correctly 
 npx playwright --help
 
+# Check test options 
+npx playwright test --help
+
+
 # you can run several commands:
 
   npx playwright test
@@ -29,4 +33,15 @@ npx playwright --help
 
   npx playwright codegen
     Auto generate tests with Codegen.
+
+
+
+Extensions:
+1. DonEnv
+2. JavaScript(ES6) code snippets
+3. npm intellisense
+4. path intellisense
+5. Playwright Test for Visual Code
+6. Prettier - code formatter
+7. vcode-icons
 

@@ -1,5 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
-
+const { defineConfig, devices } = require("@playwright/test");
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -11,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+ module.exports = defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -31,6 +30,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     ignoreHTTPSErrors: true,
+    navigationTimeout: 30_000,
   },
 
   /* Configure projects for major browsers */
@@ -40,7 +40,7 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
+    /*{
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
