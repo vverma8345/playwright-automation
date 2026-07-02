@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "demo" : "npx playwright test tests/demo/mytest.spec.ts --headed",
-    "make-apt" : "npx playwright test tests/functional/makeAptmnt.spec.ts --headed"
+    "make-apt" : "npx playwright test tests/functional/makeAptmnt.spec.ts --headed",
+    "ele-int" : "npx playwright test tests/functional/handlingEle.spec.ts --headed",
+    "inventory" : "npx playwright test tests/functional/inventory.spec.ts --headed"
+
 
   },
   "keywords": [
