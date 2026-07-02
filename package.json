@@ -4,11 +4,15 @@
   "description": "Playwright E2E Tests with AI Capabilities include MCP",
   "main": "index.js",
   "scripts": {
-    "demo" : "npx playwright test tests/demo/mytest.spec.ts --headed",
-    "make-apt" : "npx playwright test tests/functional/makeAptmnt.spec.ts --headed",
-    "ele-int" : "npx playwright test tests/functional/handlingEle.spec.ts --headed",
-    "inventory" : "npx playwright test tests/functional/inventory.spec.ts --headed"
-
+    "debug:trace": "PWDEBUG=1 npx playwright test tests/demo/debug.makeAptmnt.spec.ts --trace on",
+    "debug:cli": "PWDEBUG=1 npx playwright test tests/demo/debug.makeAptmnt.spec.ts",
+    "debug:ui": "npx playwright test tests/demo/debug.makeAptmnt.spec.ts --ui --headed",
+    "debug": "npx playwright test tests/demo/debug.makeAptmnt.spec.ts --headed",
+    "demo": "npx playwright test tests/demo/mytest.spec.ts --headed",
+    "make-apt": "npx playwright test tests/functional/makeAptmnt.spec.ts --headed",
+    "ele-int": "npx playwright test tests/functional/handlingEle.spec.ts --headed",
+    "inventory": "npx playwright test tests/functional/inventory.spec.ts --headed",
+    "login": "npx playwright test tests/functional/login.spec.ts --headed"
 
   },
   "keywords": [
@@ -20,6 +24,7 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.61.0",
-    "@types/node": "^26.0.0"
+    "@types/node": "^26.0.0",
+    "allure-playwright": "^3.10.2"
   }
 }

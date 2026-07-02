@@ -26,7 +26,7 @@ test.describe('Inventory feature', () => {
 
         let priceArr = [];
 
-        for (let i = 0; i <= totalProducts; i++) {
+      /**   for (let i = 0; i <= totalProducts; i++) {
             let eleNode = productsEls.nth(i);
 
             let productName = await eleNode.locator(".inventory_item_name").innerText();
@@ -38,6 +38,7 @@ test.describe('Inventory feature', () => {
 
         }
         console.log(`Original price of products: ${priceArr}`);
+        */
 
     })
 

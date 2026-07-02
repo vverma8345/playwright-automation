@@ -34,6 +34,8 @@ npx playwright test --help
   npx playwright codegen
     Auto generate tests with Codegen.
 
+    allure serve -- to generate allure report
+
 
 
 Extensions:
