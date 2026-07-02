@@ -8,8 +8,13 @@ test("Should load the home page with correct title",async({page})=>{
 
 });
 
-test('Test 1',{tag:"@smoke"},async({page},testInfo) =>{
+/**
+ * 
+ * test('Test 1',{tag:"@smoke"},async({page},testInfo) =>{
 
     await page.locator("//h1").click();
 
-})
+   })
+ * 
+ * 
+ */
