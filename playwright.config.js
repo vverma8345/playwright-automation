@@ -19,7 +19,7 @@ const { defineConfig, devices } = require("@playwright/test");
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html',{
     open: "never", //Do not auto-open HTML report
@@ -43,8 +43,11 @@ const { defineConfig, devices } = require("@playwright/test");
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot:"only-on-failure",
     ignoreHTTPSErrors: true,
     navigationTimeout: 30_000,
+    video:"retain-on-first-failure",
+    headless:true
   },
 
   /* Configure projects for major browsers */
