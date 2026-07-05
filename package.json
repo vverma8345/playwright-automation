@@ -12,8 +12,9 @@
     "make-apt": "npx playwright test tests/functional/makeAptmnt.spec.ts --headed",
     "ele-int": "npx playwright test tests/functional/handlingEle.spec.ts --headed",
     "inventory": "npx playwright test tests/functional/inventory.spec.ts --headed",
-    "login": "npx playwright test tests/functional/login.spec.ts --headed"
-
+    "login": "PWDEBUG=pw:api npx playwright test tests/functional/login.spec.ts --grep @smoke --headed",
+    "data:login": "npx playwright test tests/demo/login.spec.ts --headed",
+    "mytest":"npx playwright test tests/demo/mytest.spec.ts --headed"
   },
   "keywords": [
     "playwright",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@playwright/test": "^1.61.0",
     "@types/node": "^26.0.0",
-    "allure-playwright": "^3.10.2"
+    "allure-playwright": "^3.10.2",
+    "dotenv": "^17.4.2"
   }
 }

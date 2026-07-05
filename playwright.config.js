@@ -3,15 +3,19 @@ const { defineConfig, devices } = require("@playwright/test");
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+console.log(`Hello from Config file 👋`);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+
  module.exports = defineConfig({
   testDir: './tests',
+  globalTimeout: 3 * 60 * 60 * 1000, // - 3 hours
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -21,6 +25,10 @@ const { defineConfig, devices } = require("@playwright/test");
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  //expect:{timeout:10_000},
+  globalSetup:require.resolve('./tests/helpers/global-setup.ts'),
+  globalTeardown:require.resolve('./tests/helpers/global-teardown.ts'),
+
   reporter: [['html',{
     open: "never", //Do not auto-open HTML report
   }],['allure-playwright',{
@@ -46,16 +54,28 @@ const { defineConfig, devices } = require("@playwright/test");
     screenshot:"only-on-failure",
     ignoreHTTPSErrors: true,
     navigationTimeout: 30_000,
-    video:"retain-on-first-failure",
-    headless:true
+    headless:true,
+    // video:"retain-on-first-failure",
+    //actionTimeout:10_000
+    
+  
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'],
+        /**viewport:null,
+        launchOptions:{
+          args:["--start-maximized"],
+        } */
+       },
     },
+    {
+      name:'iPhone 14',
+      use:{...devices['iPhone 14']}
+    }
 
     /*{
       name: 'firefox',

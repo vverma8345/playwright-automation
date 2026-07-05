@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test'
 import { timeout } from '../../playwright.config';
 
-test.describe("Login Functionality",{annotation:{type:"Story",description:"JIRA-123: Make Appointment"},tag:"@smoke"}, () => {
+test.describe("Login Functionality", () => {
 
-    test.beforeEach("Go to login page", async ({ page },testInfo) => {
+    test.beforeEach("Go to login page", async ({ page }) => {
 
         //1. Launch application and make assert title and header    
         await page.goto("https://katalon-demo-cura.herokuapp.com/");
@@ -12,28 +12,17 @@ test.describe("Login Functionality",{annotation:{type:"Story",description:"JIRA-
 
         //2. Click on make appoinment
         await page.getByRole("link", { name: "Make Appointment" }).click();
-        
-        //time out at step level
-        await expect(page.getByText("Please login to make appointment.")).toBeVisible({timeout:10_000});
+        await expect(page.getByText("Please login to make appointment.")).toBeVisible();
 
     });
 
-    test("Should login successfully", async ({ page }, testInfo) => {
-
-
+    test("Should login successfully", async ({ page }) => {
 
         //3. Login successfully
         await page.getByLabel("username").fill("John Doe");
         await page.getByLabel("Password").fill("ThisIsNotAPassword");
         await page.getByRole("button", { name: "Login" }).click();
 
-        /**
-         *  Add custom screenshots at test level scope
-         * @TODO: add this a helper function
-         */
-
-        let fullPage = await page.screenshot({ fullPage: true });
-        await testInfo.attach("login page", { body: fullPage, contentType: "image/png" });
 
         //4. Assert to text
         await expect(page.locator("h2")).toContainText("Make Appointment");
@@ -46,7 +35,6 @@ test.describe("Login Functionality",{annotation:{type:"Story",description:"JIRA-
 
 
         //3. login unsuccessfull
-
         await page.getByLabel("username").fill("John Smith");
         await page.getByLabel("Password").fill("ThisIsNotAPassword");
         await page.getByRole("button", { name: "Login" }).click();
