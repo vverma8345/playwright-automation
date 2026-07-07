@@ -4,6 +4,8 @@
   "description": "Playwright E2E Tests with AI Capabilities include MCP",
   "main": "index.js",
   "scripts": {
+    "demo:config": "npx playwright test --config=config/test.playwright.config.ts demo/param.makeAptmnt.spec.ts --headed",
+    "demo:param": "npx playwright test tests/demo/param.makeAptmnt.spec.ts --headed",
     "debug:trace": "PWDEBUG=1 npx playwright test tests/demo/debug.makeAptmnt.spec.ts --trace on",
     "debug:cli": "PWDEBUG=1 npx playwright test tests/demo/debug.makeAptmnt.spec.ts",
     "debug:ui": "npx playwright test tests/demo/debug.makeAptmnt.spec.ts --ui --headed",

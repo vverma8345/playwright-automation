@@ -19,9 +19,12 @@ export default async function globalSetup(config: FullConfig) {
 
         console.log(`[INFO]: Completed the global setup...`)
 
-
+     
+        //set login cookies global variable
+        process.env.LOGIN_COOKIES = undefined
     }
 
 
 
 }
+

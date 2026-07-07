@@ -13,7 +13,7 @@ console.log(`Hello from Config file 👋`);
  * See https://playwright.dev/docs/test-configuration.
  */
 
- module.exports = defineConfig({
+ export const baseConfig = defineConfig({
   testDir: './tests',
   globalTimeout: 3 * 60 * 60 * 1000, // - 3 hours
   /* Run tests in files in parallel */
@@ -72,7 +72,7 @@ console.log(`Hello from Config file 👋`);
         } */
        },
     },
-    {
+   /* {
       name:'iPhone 14',
       use:{...devices['iPhone 14']}
     }

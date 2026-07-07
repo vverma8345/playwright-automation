@@ -14,4 +14,4 @@ tests-examples/
 examples.*
 *.log
 .DS_Store
-
+tests/demo/param.makeAptmnt.spec.ts

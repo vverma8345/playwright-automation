@@ -39,7 +39,7 @@ test.describe('Make Appointment', () => {
         // date field
         await page.getByRole('textbox', { name: 'Visit Date (Required)' }).click();
         await page.getByRole('textbox', { name: 'Visit Date (Required)' }).fill('01/07/2027');
-       // await page.getByRole('textbox', { name: 'Visit Date (Required)' }).press('Enter');
+        await page.getByRole('textbox', { name: 'Visit Date (Required)' }).press('Enter');
         await page.getByRole('textbox', { name: 'Comment' }).click();
         //mulltiline textbox
         await page.getByRole('textbox', { name: 'Comment' }).fill('This is multiline comment !');
