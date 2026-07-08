@@ -1,8 +1,13 @@
 import { test, expect } from '@playwright/test';
+import {log} from '../helpers/logger';
 
 test.describe('Make Appointment', () => {
 
+
     test.beforeEach('Login with valid creds', async ({ page }) => {
+   
+       await log("info", "Starting test: Login with valid creds");
+
         //1. Launch application and make assert title and header    
         await page.goto("https://katalon-demo-cura.herokuapp.com/");
         await expect(page).toHaveTitle("CURA Healthcare Service");
@@ -13,8 +18,8 @@ test.describe('Make Appointment', () => {
         await expect(page.getByText("Please login to make appointment.")).toBeVisible();
 
         //3. Login successfully
-        await page.getByLabel("username").fill("John Doe");
-        await page.getByLabel("Password").fill("ThisIsNotAPassword");
+        await page.getByLabel("username").fill(process.env.TEST_USER_NAME);
+        await page.getByLabel("Password").fill(process.env.TEST_PASSWORD);
         await page.getByRole("button", { name: "Login" }).click();
 
         //4. Assert to text
@@ -25,6 +30,8 @@ test.describe('Make Appointment', () => {
     })
 
     test('Should make appointment with non-default values', async ({ page }) => {
+
+        await log("info", "Starting test: Should make appointment with non-default values");
 
         //dropdown
         await page.getByLabel('Facility').selectOption('Hongkong CURA Healthcare Center');
