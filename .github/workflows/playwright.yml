@@ -24,9 +24,10 @@ jobs:
     name: Playwright Tests
     runs-on: ubuntu-latest
     timeout-minutes: 60
+
     env:
-      RUNNER: ${{secrets.RUNNER}}
-      TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
+      RUNNER: ${{ secrets.RUNNER }}
+      TEST_USER_NAME: ${{ secrets.TEST_USERNAME }}
       TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
 
     steps:
@@ -45,11 +46,17 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      - name: Verify environment variables
+        run: |
+          echo "RUNNER is set: ${{ env.RUNNER != '' }}"
+          echo "TEST_USER_NAME is set: ${{ env.TEST_USER_NAME != '' }}"
+          echo "TEST_PASSWORD is set: ${{ env.TEST_PASSWORD != '' }}"
+
       - name: Run Playwright tests
         run: npx playwright test --grep @smoke --reporter=html --output=test-results
 
       - name: Upload Playwright Report
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@v5
         with:
           name: playwright-report
@@ -57,7 +64,7 @@ jobs:
           retention-days: 30
 
       - name: Upload Playwright Test Results
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@v5
         with:
           name: test-results
