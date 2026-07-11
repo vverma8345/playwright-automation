@@ -53,7 +53,7 @@ jobs:
           echo "TEST_PASSWORD is set: ${{ env.TEST_PASSWORD != '' }}"
 
       - name: Run Playwright tests
-        run: npx playwright test --grep @smoke --reporter=html --output=test-results
+        run: npx playwright test --grep @smoke 
 
       - name: Upload Playwright Report
         if: always()
