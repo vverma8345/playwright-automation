@@ -14,7 +14,8 @@ import path from "node:path";
         server:"",
         dbname:"",
         connectionStr:"",
-    }
+    },
+    apiUrl:"https://reqres.in/api"
  }
  });
 

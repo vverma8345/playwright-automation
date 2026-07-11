@@ -30,7 +30,7 @@ console.log(`Hello from Config file 👋`);
   globalTeardown:require.resolve('./tests/helpers/global-teardown.ts'),
 
   reporter: [['html',{
-    open: "never", //Do not auto-open HTML report
+    open: "always", //Do not auto-open HTML report
   }],['allure-playwright',{
      
        details:true,

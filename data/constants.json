@@ -3,5 +3,10 @@
         "success":200,
         "validationError":707
 
+    },
+    "REQ_END_POINTS":{
+        "GET_USERS_LIST":"/users?page=1",
+        "CREATE_USER":"/users"
+
     }
 }

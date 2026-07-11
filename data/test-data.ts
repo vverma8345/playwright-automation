@@ -27,4 +27,11 @@ export default class TestData {
 
     }
 
+    static apiUserCreation() {
+        return [
+            { testId: "TC001", name: "John Wick", job: "QA Engineer", id: "444", createdAt: "2025-11-01T01:02:01.122Z" }
+        ]
+
+    }
+
 }

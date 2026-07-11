@@ -3,7 +3,8 @@ import { test as base } from '@playwright/test';
 export type EnvConfig = {
   envName: string;
   appUrl:string;
-  dbConfig:{}
+  dbConfig:{};
+  apiUrl:string;
 };
 
 export const test = base.extend<EnvConfig>({
@@ -12,5 +13,6 @@ export const test = base.extend<EnvConfig>({
   envName: ["test", { option: true }],
   appUrl: ["<provide url>", { option: true }],
   dbConfig: [{}, { option: true }],
+  apiUrl: ["<provide url>", { option: true }],
 
 });

@@ -4,6 +4,7 @@
   "description": "Playwright E2E Tests with AI Capabilities include MCP",
   "main": "index.js",
   "scripts": {
+    "demo:api":"npx playwright test tests/api/users.api.spec.ts",
     "demo:csv": "npx playwright test tests/demo/csv.makeAptmnt.spec.ts --headed",
     "demo:config": "npx playwright test --config=config/test.playwright.config.ts demo/param.makeAptmnt.spec.ts --headed",
     "demo:param": "npx playwright test tests/demo/param.makeAptmnt.spec.ts --headed",
