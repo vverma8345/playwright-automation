@@ -12,12 +12,12 @@ test("Should load the home page with correct title", { annotation: { type: "Bug"
 
 });
 
-test('Should demo config file', { tag: "@smoke" }, async ({ page }, testInfo) => {
+test('Should demo config file', async ({ page }, testInfo) => {
 
     console.log(`>> config at run-time: ${JSON.stringify(testInfo.config)}`)
 })
 
-test('Should demo fixtures', { tag: "@smoke" }, async ({ page, browserName }, testInfo) => {
+test('Should demo fixtures', async ({ page, browserName }, testInfo) => {
 
     //timeouts
     // test.slow();

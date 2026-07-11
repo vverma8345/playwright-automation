@@ -16,11 +16,11 @@ test.describe("Login Functionality", () => {
 
     });
 
-    test("Should login successfully",{tag: "@smoke"}, async ({ page }) => {
+    test("Should login successfully", async ({ page }) => {
 
         //3. Login successfully
-        await page.getByLabel("username").fill("John Doe");
-        await page.getByLabel("Password").fill("ThisIsNotAPassword");
+        await page.getByLabel("username").fill(process.env.TEST_USERNAME);
+        await page.getByLabel("Password").fill(process.env.TEST_PASSWORD);
         await page.getByRole("button", { name: "Login" }).click();
 
 
@@ -31,7 +31,7 @@ test.describe("Login Functionality", () => {
 
     });
 
-    test("Should prevent login with incorrect creds",{tag: "@smoke"}, async ({ page }) => {
+    test("Should prevent login with incorrect creds", async ({ page }) => {
 
 
         //3. login unsuccessfull

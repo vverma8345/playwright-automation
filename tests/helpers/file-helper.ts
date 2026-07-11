@@ -7,7 +7,7 @@ import {log} from '../helpers/logger';
  * @returns Array of objects
  */
 function readCsvFile(filePath: string): any[] {
-      const csvDataStr = fs.readFileSync(filePath, { encoding: "utf8" });
+    const csvDataStr = fs.readFileSync(filePath, { encoding: "utf8" });
     const csvDataArray = parse(csvDataStr, {
         columns: true,
         skip_empty_lines: true,

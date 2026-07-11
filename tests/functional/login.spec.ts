@@ -23,8 +23,8 @@ test.describe("Login Functionality",{annotation:{type:"Story",description:"JIRA-
 
 
         //3. Login successfully
-        await page.getByLabel("username").fill("John Doe");
-        await page.getByLabel("Password").fill("ThisIsNotAPassword");
+        await page.getByLabel("username").fill(process.env.TEST_USER_NAME);
+        await page.getByLabel("Password").fill(process.env.TEST_PASSWORD);
         await page.getByRole("button", { name: "Login" }).click();
 
         /**
