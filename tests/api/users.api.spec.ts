@@ -2,6 +2,7 @@ import { test, expect, request } from "@playwright/test";
 import { log } from "../helpers/logger";
 import constants from "../../data/constants.json";
 import testData from "../../data/test-data";
+import fileHelper from "../helpers/file-helper";
 
 test.describe('API Tests', () => {
     let envConfig = undefined; // Placeholder for environment configuration
@@ -38,8 +39,10 @@ test.describe('API Tests', () => {
         await log('info', `GET call successful with response: ${JSON.stringify(responseBody)}`);
 
         expect(responseBody.data[0].email).toBe('george.bluth@reqres.in');
-        const userData = responseBody.data[0];
+        const userData = responseBody;
         await log('info', `User Data: ${JSON.stringify(userData)}`);
+
+        fileHelper.writeFile(`${process.cwd()}/data/api-res/list-of-users.json`, `${JSON.stringify(userData,undefined, 4)}`); // Write the user data to a JSON file with pretty formatting
 
     });
 

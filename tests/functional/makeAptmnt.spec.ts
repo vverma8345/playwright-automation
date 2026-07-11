@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import {log} from '../helpers/logger';
+import screenshots from '../helpers/screenshots';
 
 test.describe('Make Appointment', () => {
 
@@ -14,13 +15,17 @@ test.describe('Make Appointment', () => {
         await expect(page.locator("//h1")).toHaveText("CURA Healthcare Service");
 
         //2. Click on make appoinment
+
+        await screenshots.takeElementScreenshot(page.getByRole("link", { name: "Make Appointment" }), "make_appointment_link.png");
         await page.getByRole("link", { name: "Make Appointment" }).click();
         await expect(page.getByText("Please login to make appointment.")).toBeVisible();
 
         //3. Login successfully
-        await page.getByLabel("username").fill(process.env.TEST_USER_NAME);
-        await page.getByLabel("Password").fill(process.env.TEST_PASSWORD);
-        await page.getByRole("button", { name: "Login" }).click();
+        await page.locator("#txt-username").fill('John Doe', { timeout: 10_000 });
+        await page.locator("#txt-password").fill('ThisIsNotAPassword', { timeout: 10_000 });
+        await page.locator("#btn-login").click();
+
+        await screenshots.takeFullPageScreenshot(page, "login_successful.png");
 
         //4. Assert to text
         await expect(page.locator("h2")).toContainText("Make Appointment");

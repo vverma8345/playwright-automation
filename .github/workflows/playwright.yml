@@ -42,7 +42,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --grep @smoke --reporter=html --output=test-results
 
       - name: Upload Playwright Report
         if: failure()

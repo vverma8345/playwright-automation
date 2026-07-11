@@ -16,7 +16,7 @@ test.describe("Login Functionality", () => {
 
     });
 
-    test("Should login successfully", async ({ page }) => {
+    test("Should login successfully",{tag: "@smoke"}, async ({ page }) => {
 
         //3. Login successfully
         await page.getByLabel("username").fill("John Doe");
@@ -31,7 +31,7 @@ test.describe("Login Functionality", () => {
 
     });
 
-    test("Should prevent login with incorrect creds", async ({ page }) => {
+    test("Should prevent login with incorrect creds",{tag: "@smoke"}, async ({ page }) => {
 
 
         //3. login unsuccessfull

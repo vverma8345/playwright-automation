@@ -46,4 +46,5 @@ Extensions:
 5. Playwright Test for Visual Code
 6. Prettier - code formatter
 7. vcode-icons
+8. TODO -- highlighter
 
