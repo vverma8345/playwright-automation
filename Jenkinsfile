@@ -27,7 +27,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                export TEST_USER=${TEST_CREDS_USR}
+                export TEST_USER_NAME=${TEST_CREDS_USR}
                 export TEST_PASSWORD=${TEST_CREDS_PSW}
 
                 npx playwright test --grep "smoke" --reporter=line
